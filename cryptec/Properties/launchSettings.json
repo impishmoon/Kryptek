@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "cryptec - empty": {
+      "commandName": "Project"
+    },
+    "cryptec - txt": {
+      "commandName": "Project",
+      "commandLineArgs": "\"G:/Visual Studio Projects/cryptec/cryptec/bin/Debug/net6.0/target.txt\""
+    },
+    "cryptec - enc": {
+      "commandName": "Project",
+      "commandLineArgs": "\"G:/Visual Studio Projects/cryptec/cryptec/bin/Debug/net6.0/target.txt.enc\""
+    }
+  }
+}
