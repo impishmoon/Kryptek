@@ -69,7 +69,7 @@ void EncryptTarget(string targetPath, string password)
         Encrypt(password, originalStream, tempStream);
     }
 
-    var encryptedPath = targetPath + ".enc";
+    var encryptedPath = targetPath + ".kek";
 
     File.Delete(targetPath);
     File.Move(tempPath, encryptedPath);
@@ -116,9 +116,9 @@ if (args.Length == 0)
 {
     Console.WriteLine("- There are currently no launch arguments for cryptec");
     Console.WriteLine("- To use, drag your target file/folder onto cryptec and provide a password");
-    Console.WriteLine("- To decrypt, target any file that ends with '.enc'");
+    Console.WriteLine("- To decrypt, target any file that ends with '.kek'");
     Console.WriteLine("- Additionally, you can simply execute 'cryptec here' in any folder and cryptec will recursively encrypt all files in the folder you launched it from.");
-    Console.WriteLine("- When providing a folder target, cryptec will encrypt/decrypt each file in the folder recursively based on the individual file's encryption status (does it end with .enc or not?)");
+    Console.WriteLine("- When providing a folder target, cryptec will encrypt/decrypt each file in the folder recursively based on the individual file's encryption status (does it end with .kek or not?)");
 }
 else if(args.Length == 1)
 {
@@ -146,7 +146,7 @@ else if(args.Length == 1)
             //is a directory
             foreach(string filePath in Directory.EnumerateFiles(targetPath, "*.*", SearchOption.AllDirectories))
             {
-                if (filePath.EndsWith(".enc"))
+                if (filePath.EndsWith(".kek"))
                 {
                     DecryptTarget(filePath, password);
                 }
@@ -159,7 +159,7 @@ else if(args.Length == 1)
         else
         {
             //is a file
-            if (targetPath.EndsWith(".enc"))
+            if (targetPath.EndsWith(".kek"))
             {
                 DecryptTarget(targetPath, password);
             }
